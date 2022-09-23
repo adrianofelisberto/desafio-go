@@ -1,10 +1,10 @@
-FROM golang:1.15 AS build
+FROM golang:1.15-alpine AS build
 
 WORKDIR /main
 
 COPY main.go .
 
-RUN go build -o main
+RUN go build -ldflags="-s -w" main.go
 
 
 FROM scratch
